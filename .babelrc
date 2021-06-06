@@ -1,0 +1,15 @@
+{
+  "plugins": [
+    "relay",
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-proposal-class-properties",
+    [
+      "module-resolver",
+      {
+        "root": ["./src"],
+        "alias": {}
+      }
+    ]
+  ],
+  "presets": ["@babel/preset-env"]
+}

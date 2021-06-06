@@ -1,0 +1,40 @@
+{
+  "name": "graphql-compose-relay",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/adnandothussain/graphql-compose-relay.git",
+  "author": "Adnan Hussain <adnanrajput42@gmail.com>",
+  "keywords": [
+    "graphql",
+    "relay",
+    "mongodb",
+    "graphql-compose",
+    "graphql-compose-mongoose",
+    "graphql-compose-relay"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon --exec babel-node ./src/app.js"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.3",
+    "@babel/core": "^7.14.3",
+    "@babel/node": "^7.14.2",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-transform-runtime": "^7.14.3",
+    "@babel/preset-env": "^7.14.4",
+    "@babel/register": "^7.13.16",
+    "@babel/runtime": "^7.14.0",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "babel-plugin-relay": "^11.0.2",
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "apollo-server-express": "^2.25.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "graphql": "^15.5.0",
+    "graphql-compose": "^9.0.1"
+  }
+}

@@ -1,6 +1,7 @@
 /* @flow */
 
 import { schemaComposer } from "graphql-compose";
+import data from "../mock/data";
 
 const AuthorTC = schemaComposer.createObjectTC({
   name: "Author",
@@ -32,7 +33,8 @@ PostTC.addFields({
     // let's take lodash `find` method, for searching by `authorId`
     // PS. `resolve` method may be async for fetching data from DB
     // resolve: async (source, args, context, info) => { return DB.find(); }
-    resolve: (post) => [],
+    resolve: (post) =>
+      data.authors.find((author) => author.id === post.authorId),
   },
 });
 
@@ -43,24 +45,27 @@ AuthorTC.addFields({
     type: [PostTC],
     // for obtaining list of post we get current author.id
     // and scan and filter all Posts with desired authorId
-    resolve: (author) => [],
+    resolve: (author) =>
+      data.posts.filter((post) => post.authorId === author.id),
   },
   postCount: {
     type: "Int",
     description: "Number of Posts written by Author",
-    resolve: (author) => [],
+    resolve: (author) =>
+      data.posts.filter((post) => post.authorId === author.id).length,
   },
 });
 
 schemaComposer.Query.addFields({
   posts: {
     type: "[Post]",
-    resolve: () => (_) => [], // resolve the posts from the db
+    resolve: () => data.posts, // resolve the posts from the db
   },
   author: {
     type: "Author",
     args: { id: "Int!" },
-    resolve: (_) => [], // resolve the author from the db
+    // resolve the author from the db
+    resolve: (_, { id }) => data.authors.find((author) => author.id === id),
   },
 });
 
@@ -74,7 +79,9 @@ schemaComposer.Mutation.addFields({
       authorId: "Int",
     },
     resolve: (_, args) => {
-      return { ...args, id: "123" };
+      const newPost = { ...args, id: data.posts.length + 1 };
+      data.posts.push(newPost);
+      return newPost;
     },
   },
 });

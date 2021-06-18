@@ -14,7 +14,8 @@
   ],
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon --exec babel-node ./src/app.js"
+    "dev": "nodemon --exec babel-node ./src/app.js",
+    "update-schema": "babel-node ./src/schema/updateSchema.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.3",

@@ -80,4 +80,4 @@ schemaComposer.Mutation.addFields({
 });
 
 // And now buildSchema which will be passed to express-graphql or apollo-server
-export const schema = schemaComposer.buildSchema();
+export default schemaComposer.buildSchema();

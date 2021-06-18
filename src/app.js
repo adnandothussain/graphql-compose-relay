@@ -5,11 +5,10 @@ import GraphQLServer from "./GraphQLServer";
 const app = express();
 
 const graphQLServer = new GraphQLServer().getApolloServer();
-// console.log('graphQLServer==>',graphQLServer)
 graphQLServer.applyMiddleware({ app });
 
 const { MONGO_URL, PORT } = process.env;
-const APP_PORT = PORT || 4001;
+const APP_PORT = PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
@@ -19,6 +18,6 @@ app.get("/", async (_, res) => {
   res.send("Hello Web!");
 });
 
-app.listen(PORT, () => {
+app.listen(APP_PORT, () => {
   console.log(`The server is running at http://localhost:${APP_PORT}`);
 });

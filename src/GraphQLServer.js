@@ -1,7 +1,7 @@
 import { ApolloServer } from "apollo-server-express";
 // import {getUserFromToken} from 'Utils/auth';
 import { ENV_CONFIG } from "./config";
-import { schema } from "./schema";
+import schema from "./schema/schema";
 
 export default class GraphQLServer {
   constructor() {

@@ -1,0 +1,26 @@
+type Query {
+  posts: [Post]
+  author(id: Int!): Author
+}
+
+type Post {
+  id: Int!
+  title: String
+  votes: Int
+  authorId: Int
+  author: Author
+}
+
+type Author {
+  id: Int!
+  firstName: String
+  lastName: String
+  posts: [Post]
+
+  """Number of Posts written by Author"""
+  postCount: Int
+}
+
+type Mutation {
+  addPost(title: String, votes: Int, authorId: Int): Post
+}
